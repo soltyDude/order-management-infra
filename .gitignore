@@ -1,0 +1,22 @@
+# Docker runtime data
+docker-data/
+volumes/
+*.log
+*.pid
+
+# Grafana / Prometheus data
+grafana/data/
+prometheus/data/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
