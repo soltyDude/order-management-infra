@@ -71,8 +71,40 @@ services:
     volumes:
       - kafka_data:/bitnami/kafka
 
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  zipkin:
+    image: openzipkin/zipkin:2
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+
+  prometheus:
+    image: prom/prometheus:v2.52.0
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:10.4.2
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+
 volumes:
   postgres_orders_data:
   postgres_payments_data:
   postgres_inventory_data:
   kafka_data:
+  redis_data:
+  grafana_data:
